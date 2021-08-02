@@ -1103,3 +1103,15 @@ for (var i = 0; i < listaProdutos.length; i++) {
 }
 
 console.log("Resultado do exercício 1:" + stockTotal)
+
+// Exercicio 3: 
+
+availableStock = 0
+
+for (var i = 0; i < listaProdutos.length; i++) {
+    if (listaProdutos[i].disponivel === "sim") {
+        availableStock += (listaProdutos[i].qtdEstoque) 
+    }
+   }
+
+console.log("Resultado do exercício 3:" + availableStock)
