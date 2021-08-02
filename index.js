@@ -1102,7 +1102,7 @@ for (var i = 0; i < listaProdutos.length; i++) {
  stockTotal += (listaProdutos[i].qtdEstoque)
 }
 
-console.log("Resultado do exercício 1:" + stockTotal)
+console.log("A quantidade total de itens em estoque é:" + stockTotal)
 
 // Exercicio 3: 
 
@@ -1114,7 +1114,32 @@ for (var i = 0; i < listaProdutos.length; i++) {
     }
    }
 
-console.log("Resultado do exercício 3: " + availableStock)
+console.log("A quantidade total de itens disponíveis em estoque é: " + availableStock)
+
+// Exercicio 9:
+
+var cheapestProductStock = [] 
+
+
+for (var i = 0; i < listaProdutos.length; i++) {
+
+    if (listaProdutos[i].disponivel === "sim") {
+        cheapestProductStock.push
+            (listaProdutos[i].preco * listaProdutos[i].qtdEstoque)
+    }
+}
+
+var cheapestProduct = cheapestProductStock[0]
+
+for (var i = 0; i < cheapestProductStock.length; i++) {
+    
+    if (cheapestProductStock[i] < cheapestProduct) {
+        cheapestProduct = cheapestProductStock[i]
+    }
+
+}
+
+console.log("O estoque com menor valor é: " + cheapestProduct.toFixed(2))
 
 // Exercicio 10:
 
@@ -1128,4 +1153,4 @@ for (var i = 0; i < listaProdutos.length; i++) {
    } 
 }
 ticketMedio = (ticketMedio / x)
-console.log("Resultado do exercício 10: " + ticketMedio.toFixed(2))
+console.log("O ticket médio é: " + ticketMedio.toFixed(2))
