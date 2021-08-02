@@ -1102,4 +1102,4 @@ for (var i = 0; i < listaProdutos.length; i++) {
  stockTotal += (listaProdutos[i].qtdEstoque)
 }
 
-console.log("Resultado do exercício 1: " + stockTotal)
+console.log("Resultado do exercício 1:" + stockTotal)
