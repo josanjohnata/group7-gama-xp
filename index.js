@@ -1114,4 +1114,4 @@ for (var i = 0; i < listaProdutos.length; i++) {
     }
    }
 
-console.log("Resultado do exercício 3:" + availableStock)
+console.log("Resultado do exercício 3: " + availableStock)
