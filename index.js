@@ -1115,3 +1115,17 @@ for (var i = 0; i < listaProdutos.length; i++) {
    }
 
 console.log("Resultado do exercício 3: " + availableStock)
+
+// Exercicio 10:
+
+var ticketMedio = 0
+let x = 0
+for (var i = 0; i < listaProdutos.length; i++) {
+    if (listaProdutos[i].disponivel === "sim") {
+        x++
+        let productValue = (listaProdutos[i].preco * listaProdutos[i].qtdEstoque) 
+        ticketMedio += productValue
+   } 
+}
+ticketMedio = (ticketMedio / x)
+console.log("Resultado do exercício 10: " + ticketMedio.toFixed(2))
