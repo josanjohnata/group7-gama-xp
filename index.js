@@ -1096,61 +1096,72 @@ var listaProdutos = [
 ]
 
 // Exercício 1:
-let stockTotal = 0
 
-for (var i = 0; i < listaProdutos.length; i++) {
- stockTotal += (listaProdutos[i].qtdEstoque)
+function stockTotal() {
+    let stockTotal = 0
+
+    for (var i = 0; i < listaProdutos.length; i++) {
+    stockTotal += (listaProdutos[i].qtdEstoque)
+    }
+
+    console.log("A quantidade total de itens em estoque é:" + stockTotal)
 }
-
-console.log("A quantidade total de itens em estoque é:" + stockTotal)
 
 // Exercicio 3: 
 
-availableStock = 0
+function availableStock() {
 
-for (var i = 0; i < listaProdutos.length; i++) {
-    if (listaProdutos[i].disponivel === "sim") {
-        availableStock += (listaProdutos[i].qtdEstoque) 
+    var availableStock = 0
+
+    for (var i = 0; i < listaProdutos.length; i++) {
+        if (listaProdutos[i].disponivel === "sim") {
+            availableStock += (listaProdutos[i].qtdEstoque) 
+        }
     }
-   }
 
-console.log("A quantidade total de itens disponíveis em estoque é: " + availableStock)
+    console.log("A quantidade total de itens disponíveis em estoque é: " + availableStock)
+
+}
 
 // Exercicio 9:
 
-var cheapestProductStock = [] 
+function cheapestProduct() {
 
+    var cheapestProductStock = [] 
 
-for (var i = 0; i < listaProdutos.length; i++) {
+    for (var i = 0; i < listaProdutos.length; i++) {
 
-    if (listaProdutos[i].disponivel === "sim") {
-        cheapestProductStock.push
-            (listaProdutos[i].preco * listaProdutos[i].qtdEstoque)
-    }
-}
-
-var cheapestProduct = cheapestProductStock[0]
-
-for (var i = 0; i < cheapestProductStock.length; i++) {
-    
-    if (cheapestProductStock[i] < cheapestProduct) {
-        cheapestProduct = cheapestProductStock[i]
+        if (listaProdutos[i].disponivel === "sim") {
+            cheapestProductStock.push
+                (listaProdutos[i].preco * listaProdutos[i].qtdEstoque)
+        }
     }
 
-}
+    var cheapestProduct = cheapestProductStock[0]
 
-console.log("O estoque com menor valor é: " + cheapestProduct.toFixed(2))
+    for (var i = 0; i < cheapestProductStock.length; i++) {
+        
+        if (cheapestProductStock[i] < cheapestProduct) {
+            cheapestProduct = cheapestProductStock[i]
+        }
+
+    }
+    console.log("O estoque com menor valor é: " + cheapestProduct.toFixed(2))
+}
 
 // Exercicio 10:
 
-var ticketMedio = 0
-let x = 0
-for (var i = 0; i < listaProdutos.length; i++) {
-    if (listaProdutos[i].disponivel === "sim") {
-        x++
-        let productValue = (listaProdutos[i].preco * listaProdutos[i].qtdEstoque) 
-        ticketMedio += productValue
-   } 
+function ticketMedio() {
+    var ticketMedio = 0
+    let x = 0
+    for (var i = 0; i < listaProdutos.length; i++) {
+        if (listaProdutos[i].disponivel === "sim") {
+            x++
+            let productValue = (listaProdutos[i].preco * listaProdutos[i].qtdEstoque) 
+            ticketMedio += productValue
+    } 
+    }
+    ticketMedio = (ticketMedio / x)
+    console.log("O ticket médio é: " + ticketMedio.toFixed(2))
+
 }
-ticketMedio = (ticketMedio / x)
-console.log("O ticket médio é: " + ticketMedio.toFixed(2))
