@@ -7,32 +7,32 @@
   <link rel="stylesheet" href="style.css">
   <title>Grupo 7</title>
 </head>
-<body onload="loadTotalStock('totalEstoque')">
+<body onload="loadTotalStock('idField')">
   <header>
-    <p>Estoque: </p><span id="totalEstoque">0</span>
+    <p>Estoque: </p><span id="idField">0</span>
   </header>
     <form method="GET">
       <table>
         <caption>Cadastro de novos produtos</caption>
         <tr>
           <td class="alinharRotulos">Descrição do produto:</td>
-          <td><input id="txtNomeProduto" type="text"></td>
+          <td><input id="txtNameProduct" type="text"></td>
         </tr>
         <tr>
           <td class="alinharRotulos">Preço do produto:</td>
-          <td><input id="txtPrecoProduto" type="number"></td>
+          <td><input id="txtPriceProduct" type="number"></td>
         </tr>
         <tr>
           <td class="alinharRotulos">Código do produto:</td>
-          <td><input id="txtCodigoProduto" type="number"></td>
+          <td><input id="txtCodeProduct" type="number"></td>
         </tr>
         <tr>
           <td class="alinharRotulos">Quantidade do produto:</td>
-          <td><input id="txtQuantidadeProduto" type="number"></td>
+          <td><input id="txtQuantityProduct" type="number"></td>
         </tr>
         <tr>
           <td>
-            <input type="button" value="cadastrar" class="alinhaBtns" onclick="validarProduto('txtNomeProduto', 'txtQuantidadeProduto', 'txtPrecoProduto', 'txtCodigoProduto');">
+            <input type="button" value="cadastrar" class="alinhaBtns" onclick="validarProduto('txtNameProduct', 'txtQuantityProduct', 'txtPriceProduct', 'txtCodeProduct');">
             <input type="button" value="Ver estoque" class="alinhaBtns" onclick="window.open('estoque.html', '_self');">
             <input type="reset" value="limpar" class="alinhaBtns">
           </td>

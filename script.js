@@ -22,11 +22,11 @@
 
 // Essa função valida as informações dos produtos.
 
-function checkProductInfo(txtNomeProduto, txtQuantidadeProduto, txtPrecoProduto, txtCodigoProduto) {
-  let productName = document.getElementById(txtNomeProduto).value;
-  let productQuantity = document.getElementById(txtQuantidadeProduto).value;
-  let productPrice = document.getElementById(txtPrecoProduto).value;
-  let productCode = document.getElementById(txtCodigoProduto).value;
+function checkProductInfo(txtNameProduct, txtQuantityProduct, txtPriceProduct, txtCodeProduct) {
+  let productName = document.getElementById(txtNameProduct).value;
+  let productQuantity = document.getElementById(txtQuantityProduct).value;
+  let productPrice = document.getElementById(txtPriceProduct).value;
+  let productCode = document.getElementById(txtCodeProduct).value;
 
   if (productName == '') {
     alert('Nome do produto está em branco. Por favor preenchê-lo!');
@@ -76,7 +76,28 @@ function loadTotalStock(idField) {
   } else alert('A versão do seu navegador é muito antiga. Não será possível executar essa aplicação.')
 }
 
+// Esse função lista o novo estoque na página estoque.html
 
+function listProducts() {
+  if (typeof(Storage) !== 'undefined') {
+    let products = localStorage.getItem('products');
+    document.write('<h1>Estoque:</h1>')
+    if (products == null)
+      document.write('<h3>Ainda não há nenhum item no estoque</h3>');
+    else {
+      products = JSON.parse(products);
+      products.forEach(products => {
+        document.write('<ul>');
+        document.write('<li>Nome do produto: ' + products.name + '</li>');
+        document.write('<li>Código do produto: ' + products.code + '</li>');
+        document.write('<li>Quantidade no estoque: ' + products.quantity + '</li>');
+        document.write('<li>Preço do produto: ' + products.price + '</li>');
+        document.write('</ul>');
+      })
+    }
+  }
+  else alert('A versão do seu navegador é muito antiga. Não será possível executar essa aplicação.')
+}
 
 
 // const api = require("./api");
