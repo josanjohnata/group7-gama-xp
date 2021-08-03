@@ -1,0 +1,66 @@
+.bodyLogin {
+  display: inline;
+  text-align: center;
+  justify-content: center;
+}
+
+.headerLogin {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 10px
+}
+
+main {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f2f2f2;
+  height: 400px;
+  width: 400px;
+  border-radius: 6px;
+}
+#buttonLogin {
+  border-radius: 5px;
+  border: 1px solid black;
+  color: black;
+  cursor: pointer;
+  padding: 0 15px;
+  text-align: center;
+  margin: 10px;
+}
+
+.alinharRotulos {
+  text-align: right;
+}
+
+.alinhaBtns {
+  width: 30%;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  border: 0px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+table {
+  clear: both;
+  background-color: rgb(124, 151, 151);
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  width: 400px;
+  margin: auto;
+}
+
+caption {
+  background-color: rgb(124, 151, 151);
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+footer {
+  text-align: center;
+}
