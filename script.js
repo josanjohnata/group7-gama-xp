@@ -63,7 +63,17 @@ function registerProduct(name, quantity, price, code) {
 // Essa função atualiza o total do estoque.
 
 function updateTotalStock(idField) {
-  localStorage.setItem('totalEstoque', ++ document.getElementById(idField).innerHTML)
+  localStorage.setItem('totalEstoque', ++ document.getElementById(idField).innerText)
+}
+
+// Essa função atualiza a quantidade de estoque ao carregar a página.
+
+function loadTotalStock(idField) {
+  if (typeof(Storage) !== 'undefined') {
+    let totalStock = localStorage.getItem('totalStock');
+    if (totalStock == null) totalStock = 0;
+    document.getElementById(idField).innerText = totalEstoque;
+  } else alert('A versão do seu navegador é muito antiga. Não será possível executar essa aplicação.')
 }
 
 
