@@ -1,6 +1,14 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .bodyLogin {
-  display: inline;
-  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   justify-content: center;
 }
 
@@ -11,15 +19,19 @@
 }
 
 main {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  flex-direction: column;
+  align-items: center;
   background-color: #f2f2f2;
-  height: 400px;
-  width: 400px;
-  border-radius: 6px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px 5px rgba(19, 20, 20, 0.09);
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  justify-content: space-evenly;
+  margin: 70px 0;
+  padding: 30px;
+  width: 30vw;
 }
+
 #buttonLogin {
   border-radius: 5px;
   border: 1px solid black;
@@ -27,6 +39,7 @@ main {
   cursor: pointer;
   padding: 0 15px;
   text-align: center;
+  padding: auto;
   margin: 10px;
 }
 
@@ -34,9 +47,8 @@ main {
   text-align: right;
 }
 
-.alinhaBtns {
-  width: 30%;
-  background-color: black;
+.btnsIndex {
+  display:flex;
   color: white;
   border-radius: 5px;
   border: 0px;
