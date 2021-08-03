@@ -1,4 +1,5 @@
-const listaProdutos = [
+    module.exports = {
+    listaProdutos: [
   {
       "codProduto": 25754,
       "descricao": "ADAPTADOR BLUETOOH USB RECEPTOR DE AUDIO P2",
@@ -1092,3 +1093,4 @@ const listaProdutos = [
       }
   }
 ]
+}
