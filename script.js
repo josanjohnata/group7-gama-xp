@@ -24,9 +24,9 @@
 
 function checkProductInfo(txtNameProduct, txtQuantityProduct, txtPriceProduct, txtCodeProduct) {
   let productName = document.getElementById(txtNameProduct).value;
-  let productQuantity = document.getElementById(txtQuantityProduct).value;
   let productPrice = document.getElementById(txtPriceProduct).value;
   let productCode = document.getElementById(txtCodeProduct).value;
+  let productQuantity = document.getElementById(txtQuantityProduct).value;
 
   if (productName == '') {
     alert('Nome do produto está em branco. Por favor preenchê-lo!');
@@ -36,17 +36,17 @@ function checkProductInfo(txtNameProduct, txtQuantityProduct, txtPriceProduct, t
     alert('O preço do produto está em branco. Por favor preenchê-lo!');
   } else if (productCode == '') {
     alert('Nome do produto está em branco. Por favor preenchê-lo!');
-  } else registerProduct(productName, productPrice, productCode, parseInt( productQuantity));
+  } else registerProduct(productName, productPrice, productCode, parseInt(productQuantity));
 }
 
 // Essa função cadastra um novo produto.
 
-function registerProduct(name, quantity, price, code) {
+function registerProduct(name, price, code, quantity) {
   let newProduct = {
     productName: name,
-    productQuantity: quantity,
     productPrice: price,
-    productCode: code
+    productCode: code,
+    productQuantity: quantity,
   };
   if (typeof(Storage) !== 'undefined') {
     let products = localStorage.getItem('products');
@@ -54,8 +54,8 @@ function registerProduct(name, quantity, price, code) {
     else products = JSON.parse(products);
     products.push(newProduct);
     localStorage.setItem('products', JSON.stringify(products))
-    alert('Foram cadastrados com sucesso ' + quantity + 'unidades do produto ' + name + '!');
-    updateTotalStock('totalEstoque');
+    alert('Foram cadastrados com sucesso ' + quantity + ' unidades do produto ' + name + '!');
+    updateTotalStock('totalStock');
     location.reload();
   } else alert('A versão do seu navegador é muito antiga. Não será possível executar essa aplicação.')
 }
@@ -63,7 +63,7 @@ function registerProduct(name, quantity, price, code) {
 // Essa função atualiza o total do estoque.
 
 function updateTotalStock(idField) {
-  localStorage.setItem('totalEstoque', ++ document.getElementById(idField).innerText)
+  localStorage.setItem('totalStock', ++ document.getElementById(idField).innerHTML)
 }
 
 // Essa função atualiza a quantidade de estoque ao carregar a página.
@@ -72,26 +72,27 @@ function loadTotalStock(idField) {
   if (typeof(Storage) !== 'undefined') {
     let totalStock = localStorage.getItem('totalStock');
     if (totalStock == null) totalStock = 0;
-    document.getElementById(idField).innerText = totalEstoque;
+    document.getElementById(idField).innerHTML = totalStock;
   } else alert('A versão do seu navegador é muito antiga. Não será possível executar essa aplicação.')
 }
 
 // Esse função lista o novo estoque na página estoque.html
 
-function listProducts() {
+function listStock() {
   if (typeof(Storage) !== 'undefined') {
     let products = localStorage.getItem('products');
+    document.write(`<input type="button" value="Voltar" class="btnBack" onclick="window.open('index.html', '_self');">`)
     document.write('<h1>Estoque:</h1>')
     if (products == null)
       document.write('<h3>Ainda não há nenhum item no estoque</h3>');
     else {
       products = JSON.parse(products);
-      products.forEach(products => {
+      products.forEach(product => {
         document.write('<ul>');
-        document.write('<li>Nome do produto: ' + products.name + '</li>');
-        document.write('<li>Código do produto: ' + products.code + '</li>');
-        document.write('<li>Quantidade no estoque: ' + products.quantity + '</li>');
-        document.write('<li>Preço do produto: ' + products.price + '</li>');
+        document.write('<li>Nome do produto: ' + product.productName + '</li>');
+        document.write('<li>Código do produto: ' + product.productCode + '</li>');
+        document.write('<li>Quantidade no estoque: ' + product.productQuantity + '</li>');
+        document.write('<li>Preço do produto: ' + product.productPrice + '</li>');
         document.write('</ul>');
       })
     }

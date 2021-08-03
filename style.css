@@ -43,12 +43,22 @@ main {
   margin: 10px;
 }
 
-.alinharRotulos {
-  text-align: right;
+.headerIndex img {
+  width: 130px;
+  height: 90px;
 }
 
 .btnsIndex {
   display:flex;
+  color: white;
+  border-radius: 5px;
+  border: 0px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.btnBack {
+  align-items: center;
   color: white;
   border-radius: 5px;
   border: 0px;
