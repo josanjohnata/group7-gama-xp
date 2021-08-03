@@ -36,10 +36,29 @@ function checkProductInfo(txtNomeProduto, txtQuantidadeProduto, txtPrecoProduto,
     alert('O preço do produto está em branco. Por favor preenchê-lo!');
   } else if (productCode == '') {
     alert('Nome do produto está em branco. Por favor preenchê-lo!');
-  } else registerProduct(productName, productQuantity, productPrice, productCode);
+  } else registerProduct(productName, productPrice, productCode, parseInt( productQuantity));
 }
 
+// Essa função cadastra um novo produto.
 
+function registerProduct(name, quantity, price, code) {
+  let newProduct = {
+    productName: name,
+    productQuantity: quantity,
+    productPrice: price,
+    productCode: code
+  };
+  if (typeof(Storage) !== 'undefined') {
+    let products = localStorage.getItem('products');
+    if (products == null) products = [];
+    else products = JSON.parse(products);
+    products.push(newProduct);
+    localStorage.setItem('products', JSON.stringify(products))
+    alert('Foram cadastrados com sucesso ' + quantity + 'unidades do produto ' + name + '!');
+    updateTotalStock('totalEstoque');
+    location.reload();
+  } else alert('A versão do seu navegador é muito antiga. Não será possível executar essa aplicação.')
+}
 
 
 
