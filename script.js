@@ -60,6 +60,11 @@ function registerProduct(name, quantity, price, code) {
   } else alert('A versão do seu navegador é muito antiga. Não será possível executar essa aplicação.')
 }
 
+// Essa função atualiza o total do estoque.
+
+function updateTotalStock(idField) {
+  localStorage.setItem('totalEstoque', ++ document.getElementById(idField).innerHTML)
+}
 
 
 
