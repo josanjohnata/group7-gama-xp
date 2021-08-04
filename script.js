@@ -149,20 +149,11 @@ fetch(myRequest)
 // Quantidade total de itens em estoque (somatória das quantidades de todos os produtos)
 
 function stockTotal() {
-  // let stockTotal = 0
 
-  // for (let i = 0; i < api.listaProdutos.length; i++) {
-  //   stockTotal += (api.listaProdutos[i].qtdEstoque)
-  // }
-
-  
-
-  const stockTotal = api.listaProdutos.reduce((acumulador, valorAtual) => acumulador + valorAtual.qtdEstoque, 0)
+  const stockTotal = api.listaProdutos.reduce((acc, i) => acc + i.qtdEstoque, 0)
 
   console.log("A quantidade total de itens em estoque é: " + stockTotal)
 }
-
-
 
 // Exercicio 2
 
@@ -187,6 +178,26 @@ function availableStock() {
 // Exercicio 5
 
 // Exercicio 6
+
+// 6 - Produto mais caro da loja (bem como seu departamento - considere apenas o preço dele)
+
+function expensiveProduct() {
+
+  let expensiveProduct = api.listaProdutos[0].preco
+  let x = 0
+
+  console.log(expensiveProduct)
+
+  for (let i = 0; i < api.listaProdutos.length; i++) {
+    if (api.listaProdutos[i].preco > expensiveProduct) {
+      expensiveProduct = api.listaProdutos[i].preco
+      x = i
+    }
+  }
+
+  console.log(api.listaProdutos[x])
+  
+}
 
 // Exercicio 7
 
@@ -250,8 +261,16 @@ function ticketMedio() {
 
 function departmentMostValuable() {
 
-  
+  let departaments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
+  departaments = departaments.filter((v, i, a) => a.indexOf(v) === i)
 
+  for (let i = 0; i < departaments.length; i++){
+    for (let a = 0; a < api.listaProdutos.length; a++) {
+      if (departaments[i] === api.listaProdutos.departamento.nomeDepto) {
+
+      }
+    }
+  }
 
 }
 // Exercicio 15
