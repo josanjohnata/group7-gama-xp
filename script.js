@@ -100,8 +100,37 @@ function listStock() {
   else alert('A versão do seu navegador é muito antiga. Não será possível executar essa aplicação.')
 }
 
-
+// Requisição da API 
 // const api = require("./api");
+
+
+// Não estava conseguindo utilizar o module exports para testar minhas funções, coloquei meu método de requisição de API enquanto não aprendi a usar o module.exports, 
+// acho que é um bom item para fazer pair
+
+// Método fetch para requisição do arquivo api.json
+let api = []
+
+const myInit = {
+  method: 'GET',
+  headrs: {
+      'Content-Type': 'application/json'},
+      mode: 'cors',
+      cache: 'default'
+  }
+
+let myRequest = new Request("./api.json", myInit)
+
+fetch(myRequest)
+  .then(function (resp) {
+    return resp.json();
+  }).then(function (d) {
+    api = d
+    return api
+    
+  })
+
+
+
 
 // // exercício 2
 // let destaqueTotal = 0;
@@ -117,3 +146,83 @@ function listStock() {
 // }
 
 
+// Exercício 1:
+
+function stockTotal() {
+  let stockTotal = 0
+
+  for (let i = 0; i < api.listaProdutos.length; i++) {
+      stockTotal += (api.listaProdutos[i].qtdEstoque)
+  }
+
+  console.log("A quantidade total de itens em estoque é: " + stockTotal)
+}
+
+// Exercicio 3: 
+
+function availableStock() {
+      let availableStock = 0
+
+      for (let i = 0; i < api.listaProdutos.length; i++) {
+          if (api.listaProdutos[i].disponivel === "sim") {
+              availableStock += (api.listaProdutos[i].qtdEstoque)
+          }
+      }
+  
+      console.log("A quantidade total de itens disponíveis em estoque é: " + availableStock)
+  }
+
+// Exercicio 9:
+
+function cheapestProduct() {
+      let cheapestProductStock = []
+
+      for (let i = 0; i < api.listaProdutos.length; i++) {
+  
+          if (api.listaProdutos[i].disponivel === "sim") {
+              cheapestProductStock.push
+                  (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
+          }
+      }
+  
+      let cheapestProduct = cheapestProductStock[0]
+  
+      for (let i = 0; i < cheapestProductStock.length; i++) {
+  
+          if (cheapestProductStock[i] < cheapestProduct) {
+              cheapestProduct = cheapestProductStock[i]
+          }
+  
+      }
+      console.log("O estoque com menor valor é: " + cheapestProduct.toFixed(2))
+  }
+
+// Exercicio 10:
+
+function ticketMedio() {
+
+      let ticketMedio = 0
+      let x = 0
+      for (let i = 0; i < api.listaProdutos.length; i++) {
+          if (api.listaProdutos[i].disponivel === "sim") {
+              x++
+              let productValue = (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
+              ticketMedio += productValue
+          }
+      }
+      ticketMedio = (ticketMedio / x)
+      console.log("O ticket médio é: " + ticketMedio.toFixed(2))
+  }
+
+// Roda todas funções do exercicio
+
+function runEverything() {
+  console.log("Exercicio 1")
+  stockTotal()
+  console.log("Exercicio 3")
+  availableStock()
+  console.log("Exercicio 9")
+  cheapestProduct()
+  console.log("Exercicio 10")
+  ticketMedio()
+}
