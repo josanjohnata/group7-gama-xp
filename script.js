@@ -130,8 +130,6 @@ fetch(myRequest)
   })
 
 
-
-
 // // exercício 2
 // let destaqueTotal = 0;
 // let total = 0;
@@ -148,6 +146,8 @@ fetch(myRequest)
 
 // Exercício 1:
 
+// Quantidade total de itens em estoque (somatória das quantidades de todos os produtos)
+
 function stockTotal() {
   let stockTotal = 0
 
@@ -158,7 +158,11 @@ function stockTotal() {
   console.log("A quantidade total de itens em estoque é: " + stockTotal)
 }
 
+// Exercicio 2
+
 // Exercicio 3: 
+
+// Quantidade total de itens disponíveis (similar ao anterior)
 
 function availableStock() {
       let availableStock = 0
@@ -172,7 +176,19 @@ function availableStock() {
       console.log("A quantidade total de itens disponíveis em estoque é: " + availableStock)
   }
 
+// Exercicio 4
+
+// Exercicio 5
+
+// Exercicio 6
+
+// Exercicio 7
+
+// Exercicio 8
+
 // Exercicio 9:
+
+// Produto em estoque menos valioso (considere o preço multiplicado pela quantidade e também apenas EM ESTOQUE)
 
 function cheapestProduct() {
       let cheapestProductStock = []
@@ -199,20 +215,29 @@ function cheapestProduct() {
 
 // Exercicio 10:
 
+// Valor do ticket médio dos produtos da empresa (basicamente o valor total do inventário dividido pelo número de itens - considere TODOS os produtos, porém considere apenas 1 exemplar por produto)
+
 function ticketMedio() {
 
       let ticketMedio = 0
       let x = 0
       for (let i = 0; i < api.listaProdutos.length; i++) {
-          if (api.listaProdutos[i].disponivel === "sim") {
               x++
-              let productValue = (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
-              ticketMedio += productValue
-          }
+              ticketMedio += (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
       }
       ticketMedio = (ticketMedio / x)
       console.log("O ticket médio é: " + ticketMedio.toFixed(2))
   }
+
+// Exercicio 11
+
+// Exercicio 12
+
+// Exercicio 13
+
+// Exercicio 14
+
+// Exercicio 15
 
 // Roda todas funções do exercicio
 
