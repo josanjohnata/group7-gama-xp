@@ -216,7 +216,6 @@ function cheapestProduct() {
     
   }
 
-  console.log(x)
   console.log("O estoque com menor valor é o(a) " + cheapestProductStock[x].descricao + " que possui um valor de estoque de R$"  + cheapestProduct.toFixed(2))
 }
 
