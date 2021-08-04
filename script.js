@@ -211,10 +211,10 @@ function cheapestProduct() {
   let cheapestProduct = cheapestProductStock[0].preco * cheapestProductStock[0].qtdEstoque  
 
   function totalStockPrice(listaProdutos, i, a) {
-    let acc = listaProdutos.preco * listaProdutos.qtdEstoque
+    let sum = listaProdutos.preco * listaProdutos.qtdEstoque
     
-    if (acc < cheapestProduct) {
-      cheapestProduct = acc
+    if (sum < cheapestProduct) {
+      cheapestProduct = sum
       cheapestStock = listaProdutos
   }}
 
