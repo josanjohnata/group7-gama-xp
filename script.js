@@ -127,7 +127,6 @@ fetch(myRequest)
   }).then(function (d) {
     api = d
     return api
-
   })
 
 
@@ -150,14 +149,20 @@ fetch(myRequest)
 // Quantidade total de itens em estoque (somatória das quantidades de todos os produtos)
 
 function stockTotal() {
-  let stockTotal = 0
+  // let stockTotal = 0
 
-  for (let i = 0; i < api.listaProdutos.length; i++) {
-    stockTotal += (api.listaProdutos[i].qtdEstoque)
-  }
+  // for (let i = 0; i < api.listaProdutos.length; i++) {
+  //   stockTotal += (api.listaProdutos[i].qtdEstoque)
+  // }
+
+  
+
+  const stockTotal = api.listaProdutos.reduce((acumulador, valorAtual) => acumulador + valorAtual.qtdEstoque, 0)
 
   console.log("A quantidade total de itens em estoque é: " + stockTotal)
 }
+
+
 
 // Exercicio 2
 
@@ -226,12 +231,10 @@ function cheapestProduct() {
 function ticketMedio() {
 
   let ticketMed = 0
-  let x = 0
   for (let i = 0; i < api.listaProdutos.length; i++) {
-    x++
     ticketMed += (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
   }
-  ticketMed = (ticketMed / x)
+  ticketMed = (ticketMed / api.listaProdutos.length)
   console.log("O ticket médio é: " + ticketMed.toFixed(2))
 }
 
@@ -243,6 +246,14 @@ function ticketMedio() {
 
 // Exercicio 14
 
+// Departamento mais valioso (qual o departamento que tem a maior somatória dos valores dos itens - Considere todos os departamentos)
+
+function departmentMostValuable() {
+
+  
+
+
+}
 // Exercicio 15
 
 // Roda todas funções do exercicio
