@@ -219,14 +219,14 @@ function cheapestProduct() {
 
 function ticketMedio() {
 
-      let ticketMedio = 0
+      let ticketMed = 0
       let x = 0
       for (let i = 0; i < api.listaProdutos.length; i++) {
               x++
-              ticketMedio += (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
+              ticketMed += (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
       }
-      ticketMedio = (ticketMedio / x)
-      console.log("O ticket médio é: " + ticketMedio.toFixed(2))
+      ticketMed = (ticketMed / x)
+      console.log("O ticket médio é: " + ticketMed.toFixed(2))
   }
 
 // Exercicio 11
