@@ -203,32 +203,25 @@ function expensiveProduct() {
 // Produto em estoque menos valioso (considere o preço multiplicado pela quantidade e também apenas EM ESTOQUE)
 
 function cheapestProduct() {
-  let cheapestProductStock = []
 
-  for (let i = 0; i < api.listaProdutos.length; i++) {
+  let cheapestStock = []
 
-    if (api.listaProdutos[i].disponivel === "sim") {
-      cheapestProductStock.push
-        ({
-          valor: api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque,
-          descricao: api.listaProdutos[i].descricao
-        })
-    }
-  }
+  let cheapestProductStock = api.listaProdutos.filter(({ disponivel }) => disponivel === "sim")
+  
+  let cheapestProduct = cheapestProductStock[0].preco * cheapestProductStock[0].qtdEstoque  
 
-  let cheapestProduct = cheapestProductStock[0].valor
-  let x = 0
+  function totalStockPrice(listaProdutos, i, a) {
+    let acc = listaProdutos.preco * listaProdutos.qtdEstoque
+    
+    if (acc < cheapestProduct) {
+      cheapestProduct = acc
+      cheapestStock = listaProdutos
+  }}
 
-  for (let i = 0; i < cheapestProductStock.length; i++) {
+  cheapestProductStock.forEach(totalStockPrice)
 
-    if (cheapestProductStock[i].valor < cheapestProduct) {
-      cheapestProduct = cheapestProductStock[i].valor
-      x = i
-    }
+  console.log('O produto com menor valor é o(a) ' + cheapestStock.descricao + ' do departamento ' + cheapestStock.departamento.nomeDepto + ' com o valor de estoque estimado em R$' + cheapestProduct)
 
-  }
-
-  console.log("O estoque com menor valor é o(a) " + cheapestProductStock[x].descricao + " que possui um valor de estoque de R$" + cheapestProduct.toFixed(2))
 }
 
 // Exercicio 10:
