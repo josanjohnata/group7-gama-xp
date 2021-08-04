@@ -198,20 +198,26 @@ function cheapestProduct() {
 
     if (api.listaProdutos[i].disponivel === "sim") {
       cheapestProductStock.push
-        (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
+        ({ valor: api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque,
+           descricao: api.listaProdutos[i].descricao
+        })
     }
   }
 
-  let cheapestProduct = cheapestProductStock[0]
+  let cheapestProduct = cheapestProductStock[0].valor
+  let x = 0
 
   for (let i = 0; i < cheapestProductStock.length; i++) {
 
-    if (cheapestProductStock[i] < cheapestProduct) {
-      cheapestProduct = cheapestProductStock[i]
+    if (cheapestProductStock[i].valor < cheapestProduct) {
+      cheapestProduct = cheapestProductStock[i].valor
+      x = i
     }
-
+    
   }
-  console.log("O estoque com menor valor é: " + cheapestProduct.toFixed(2))
+
+  console.log(x)
+  console.log("O estoque com menor valor é o(a) " + cheapestProductStock[x].descricao + " que possui um valor de estoque de R$"  + cheapestProduct.toFixed(2))
 }
 
 // Exercicio 10:
