@@ -162,13 +162,8 @@ function stockTotal() {
 // Quantidade total de itens disponíveis (similar ao anterior)
 
 function availableStock() {
-  let availableStock = 0
 
-  for (let i = 0; i < api.listaProdutos.length; i++) {
-    if (api.listaProdutos[i].disponivel === "sim") {
-      availableStock += (api.listaProdutos[i].qtdEstoque)
-    }
-  }
+const availableStock = api.listaProdutos.filter(({disponivel}) => disponivel === "sim").reduce((acc, i) => acc + i.qtdEstoque, 0)
 
   console.log("A quantidade total de itens disponíveis em estoque é: " + availableStock)
 }
