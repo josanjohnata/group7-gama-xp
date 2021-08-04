@@ -1,3 +1,4 @@
+
 // Essa função é para validar o Login
 
 // const credentials = {
@@ -98,6 +99,7 @@ function listStock() {
     }
   }
   else alert('A versão do seu navegador é muito antiga. Não será possível executar essa aplicação.')
+  
 }
 
 // Requisição da API 
@@ -129,7 +131,6 @@ fetch(myRequest)
     return api
   })
 
-
 // // exercício 2
 // let destaqueTotal = 0;
 // let total = 0;
@@ -137,7 +138,7 @@ fetch(myRequest)
 // function emDestaque() {
 //   for (let i = 0; i < api.length; i += 1) {
 //     if (listaProdutos.emDestaque === "sim") {
-//       destaqueTotal = listaProdutos.emDestaque * listaProdutos.qtdEstoque;
+//       destaqueTotal = api.listaProdutos.emDestaque * listaProdutos.qtdEstoque;
 //     }
 //     return total + (listaProdutos.preco * destaqueTotal);
 //   }
