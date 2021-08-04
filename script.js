@@ -163,7 +163,7 @@ function stockTotal() {
 
 function availableStock() {
 
-const availableStock = api.listaProdutos.filter(({disponivel}) => disponivel === "sim").reduce((acc, i) => acc + i.qtdEstoque, 0)
+  const availableStock = api.listaProdutos.filter(({ disponivel }) => disponivel === "sim").reduce((acc, i) => acc + i.qtdEstoque, 0)
 
   console.log("A quantidade total de itens disponíveis em estoque é: " + availableStock)
 }
@@ -191,7 +191,7 @@ function expensiveProduct() {
   }
 
   console.log(api.listaProdutos[x])
-  
+
 }
 
 // Exercicio 7
@@ -209,8 +209,9 @@ function cheapestProduct() {
 
     if (api.listaProdutos[i].disponivel === "sim") {
       cheapestProductStock.push
-        ({ valor: api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque,
-           descricao: api.listaProdutos[i].descricao
+        ({
+          valor: api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque,
+          descricao: api.listaProdutos[i].descricao
         })
     }
   }
@@ -224,10 +225,10 @@ function cheapestProduct() {
       cheapestProduct = cheapestProductStock[i].valor
       x = i
     }
-    
+
   }
 
-  console.log("O estoque com menor valor é o(a) " + cheapestProductStock[x].descricao + " que possui um valor de estoque de R$"  + cheapestProduct.toFixed(2))
+  console.log("O estoque com menor valor é o(a) " + cheapestProductStock[x].descricao + " que possui um valor de estoque de R$" + cheapestProduct.toFixed(2))
 }
 
 // Exercicio 10:
@@ -259,7 +260,7 @@ function departmentMostValuable() {
   let departaments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
   departaments = departaments.filter((v, i, a) => a.indexOf(v) === i)
 
-  for (let i = 0; i < departaments.length; i++){
+  for (let i = 0; i < departaments.length; i++) {
     for (let a = 0; a < api.listaProdutos.length; a++) {
       if (departaments[i] === api.listaProdutos.departamento.nomeDepto) {
 
