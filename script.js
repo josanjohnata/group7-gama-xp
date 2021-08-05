@@ -1,3 +1,4 @@
+import api from "./api.js";
 // Essa função é para validar o Login
 
 // const credentials = {
@@ -193,6 +194,17 @@ function featuredProducts () {
       console.log('Produtos disponíveis e em destaque: ' + featuredProducts)
     }
 // Exercicio 5
+// Valor total do inventário da empresa (somatória dos valores individuais multiplicado pela quantidade em estoque - considere apenas os produtos “EM ESTOQUE”)
+
+function valueStockTaking() {
+  let stockTaking = 0;
+  for ( i in api.listaProdutos ) {
+    if (api.listaProdutos[i].disponivel === "sim") {
+      stockTaking += api.listaProdutos.qtdEstoque * api.listaProdutos.preco;
+    }
+  }
+  console.log(stockTaking);
+}
 
 // Exercicio 6
 // Produto mais caro da loja (bem como seu departamento - considere apenas o preço dele)
