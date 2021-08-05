@@ -82,7 +82,6 @@ function loadTotalStock(idField) {
 function listStock() {
   if (typeof(Storage) !== 'undefined') {
     let products = localStorage.getItem('products');
-    document.write(`<input type="button" value="Voltar" class="btnBack" onclick="window.open('index.html', '_self');">`)
     document.write('<h1>Estoque:</h1>')
     if (products == null)
       document.write('<h3>Ainda não há nenhum item no estoque</h3>');
