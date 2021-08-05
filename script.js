@@ -177,13 +177,55 @@ function availableStock() {
   }
 
 // Exercicio 4
+// Quantidade de itens disponíveis e em destaque.
 
+
+function featuredProducts () {
+  let featuredProducts = 0;
+
+      for (let i = 0; i < api.listaProdutos.length; i++) {
+        if (api.listaProdutos[i].disponivel === "sim" && api.listaProdutos[i].emDestaque === "sim") {
+          
+          featuredProducts += (api.listaProdutos[i].qtdEstoque)
+    
+        }
+      }
+      console.log('Produtos disponíveis e em destaque: ' + featuredProducts)
+    }
 // Exercicio 5
 
 // Exercicio 6
+// Produto mais caro da loja (bem como seu departamento - considere apenas o preço dele)
+
+function expensiveProduct() {
+      let expensiveProduct = api.listaProdutos[0].preco;
+      let x = 0;
+      for (let i = 0; i < api.listaProdutos.length; i++) {
+
+        if (api.listaProdutos[i].preco > expensiveProduct) {
+          expensiveProduct = api.listaProdutos[i].preco;
+          x = i;
+        };
+      };
+      console.log(api.listaProdutos[x].descricao + ' ' + api.listaProdutos[x].departamento.nomeDepto + ' R$ ' + expensiveProduct)
+};
+
 
 // Exercicio 7
+//Produto mais barato da loja (bem como seu departamento - considere apenas o preço dele)
 
+function lowestPrice() {
+      let lowestPrice = api.listaProdutos[0].preco
+      let x = 0
+      for (let i = 0; i < api.listaProdutos.length; i++) {
+
+        if (api.listaProdutos[i].preco < lowestPrice) {
+          lowestPrice = api.listaProdutos[i].preco
+          x = i
+        }
+      }
+      console.log(api.listaProdutos[x].descricao + ' ' + api.listaProdutos[x].departamento.nomeDepto + ' R$' + lowestPrice) 
+}
 // Exercicio 8
 
 // Exercicio 9:
