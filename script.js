@@ -1,4 +1,4 @@
-import api from "./api.js";
+// import api from "./api.js";
 // Essa função é para validar o Login
 
 // const credentials = {
@@ -49,7 +49,7 @@ function registerProduct(name, price, code, quantity) {
     productCode: code,
     productQuantity: quantity,
   };
-  if (typeof(Storage) !== 'undefined') {
+  if (typeof (Storage) !== 'undefined') {
     let products = localStorage.getItem('products');
     if (products == null) products = [];
     else products = JSON.parse(products);
@@ -64,13 +64,13 @@ function registerProduct(name, price, code, quantity) {
 // Essa função atualiza o total do estoque.
 
 function updateTotalStock(idField) {
-  localStorage.setItem('totalStock', ++ document.getElementById(idField).innerHTML)
+  localStorage.setItem('totalStock', ++document.getElementById(idField).innerHTML)
 }
 
 // Essa função atualiza a quantidade de estoque ao carregar a página.
 
 function loadTotalStock(idField) {
-  if (typeof(Storage) !== 'undefined') {
+  if (typeof (Storage) !== 'undefined') {
     let totalStock = localStorage.getItem('totalStock');
     if (totalStock == null) totalStock = 0;
     document.getElementById(idField).innerHTML = totalStock;
@@ -80,7 +80,7 @@ function loadTotalStock(idField) {
 // Esse função lista o novo estoque na página estoque.html
 
 function listStock() {
-  if (typeof(Storage) !== 'undefined') {
+  if (typeof (Storage) !== 'undefined') {
     let products = localStorage.getItem('products');
     document.write(`<input type="button" value="Voltar" class="btnBack" onclick="window.open('index.html', '_self');">`)
     document.write('<h1>Estoque:</h1>')
@@ -99,209 +99,7 @@ function listStock() {
     }
   }
   else alert('A versão do seu navegador é muito antiga. Não será possível executar essa aplicação.')
+  
 }
 
-// Requisição da API 
-// const api = require("./api");
 
-
-// Não estava conseguindo utilizar o module exports para testar minhas funções, coloquei meu método de requisição de API enquanto não aprendi a usar o module.exports, 
-// acho que é um bom item para fazer pair
-
-// Método fetch para requisição do arquivo api.json
-let api = []
-
-const myInit = {
-  method: 'GET',
-  headrs: {
-      'Content-Type': 'application/json'},
-      mode: 'cors',
-      cache: 'default'
-  }
-
-let myRequest = new Request("./api.json", myInit)
-
-fetch(myRequest)
-  .then(function (resp) {
-    return resp.json();
-  }).then(function (d) {
-    api = d
-    return api
-    
-  })
-
-
-// // exercício 2
-// let destaqueTotal = 0;
-// let total = 0;
-
-// function emDestaque() {
-//   for (let i = 0; i < api.length; i += 1) {
-//     if (listaProdutos.emDestaque === "sim") {
-//       destaqueTotal = listaProdutos.emDestaque * listaProdutos.qtdEstoque;
-//     }
-//     return total + (listaProdutos.preco * destaqueTotal);
-//   }
-// }
-
-
-// Exercício 1:
-
-// Quantidade total de itens em estoque (somatória das quantidades de todos os produtos)
-
-function stockTotal() {
-  let stockTotal = 0
-
-  for (let i = 0; i < api.listaProdutos.length; i++) {
-      stockTotal += (api.listaProdutos[i].qtdEstoque)
-  }
-
-  console.log("A quantidade total de itens em estoque é: " + stockTotal)
-}
-
-// Exercicio 2
-
-// Exercicio 3: 
-
-// Quantidade total de itens disponíveis (similar ao anterior)
-
-function availableStock() {
-      let availableStock = 0
-
-      for (let i = 0; i < api.listaProdutos.length; i++) {
-          if (api.listaProdutos[i].disponivel === "sim") {
-              availableStock += (api.listaProdutos[i].qtdEstoque)
-          }
-      }
-  
-      console.log("A quantidade total de itens disponíveis em estoque é: " + availableStock)
-  }
-
-// Exercicio 4
-// Quantidade de itens disponíveis e em destaque.
-
-
-function featuredProducts () {
-  let featuredProducts = 0;
-
-      for (let i = 0; i < api.listaProdutos.length; i++) {
-        if (api.listaProdutos[i].disponivel === "sim" && api.listaProdutos[i].emDestaque === "sim") {
-          
-          featuredProducts += (api.listaProdutos[i].qtdEstoque)
-    
-        }
-      }
-      console.log('Produtos disponíveis e em destaque: ' + featuredProducts)
-    }
-// Exercicio 5
-// Valor total do inventário da empresa (somatória dos valores individuais multiplicado pela quantidade em estoque - considere apenas os produtos “EM ESTOQUE”)
-
-function valueStockTaking() {
-  let stockTaking = 0;
-  for ( i in api.listaProdutos ) {
-    if (api.listaProdutos[i].disponivel === "sim") {
-      stockTaking += api.listaProdutos.qtdEstoque * api.listaProdutos.preco;
-    }
-  }
-  console.log(stockTaking);
-}
-
-// Exercicio 6
-// Produto mais caro da loja (bem como seu departamento - considere apenas o preço dele)
-
-function expensiveProduct() {
-      let expensiveProduct = api.listaProdutos[0].preco;
-      let x = 0;
-      for (let i = 0; i < api.listaProdutos.length; i++) {
-
-        if (api.listaProdutos[i].preco > expensiveProduct) {
-          expensiveProduct = api.listaProdutos[i].preco;
-          x = i;
-        };
-      };
-      console.log(api.listaProdutos[x].descricao + ' ' + api.listaProdutos[x].departamento.nomeDepto + ' R$ ' + expensiveProduct)
-};
-
-
-// Exercicio 7
-//Produto mais barato da loja (bem como seu departamento - considere apenas o preço dele)
-
-function lowestPrice() {
-      let lowestPrice = api.listaProdutos[0].preco
-      let x = 0
-      for (let i = 0; i < api.listaProdutos.length; i++) {
-
-        if (api.listaProdutos[i].preco < lowestPrice) {
-          lowestPrice = api.listaProdutos[i].preco
-          x = i
-        }
-      }
-      console.log(api.listaProdutos[x].descricao + ' ' + api.listaProdutos[x].departamento.nomeDepto + ' R$' + lowestPrice) 
-}
-// Exercicio 8
-
-// Exercicio 9:
-
-// Produto em estoque menos valioso (considere o preço multiplicado pela quantidade e também apenas EM ESTOQUE)
-
-function cheapestProduct() {
-      let cheapestProductStock = []
-
-      for (let i = 0; i < api.listaProdutos.length; i++) {
-  
-          if (api.listaProdutos[i].disponivel === "sim") {
-              cheapestProductStock.push
-                  (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
-          }
-      }
-  
-      let cheapestProduct = cheapestProductStock[0]
-  
-      for (let i = 0; i < cheapestProductStock.length; i++) {
-  
-          if (cheapestProductStock[i] < cheapestProduct) {
-              cheapestProduct = cheapestProductStock[i]
-          }
-  
-      }
-      console.log("O estoque com menor valor é: " + cheapestProduct.toFixed(2))
-  }
-
-// Exercicio 10:
-
-// Valor do ticket médio dos produtos da empresa (basicamente o valor total do inventário dividido pelo número de itens - considere TODOS os produtos, porém considere apenas 1 exemplar por produto)
-
-function ticketMedio() {
-
-      let ticketMed = 0
-      let x = 0
-      for (let i = 0; i < api.listaProdutos.length; i++) {
-              x++
-              ticketMed += (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
-      }
-      ticketMed = (ticketMed / x)
-      console.log("O ticket médio é: " + ticketMed.toFixed(2))
-  }
-
-// Exercicio 11
-
-// Exercicio 12
-
-// Exercicio 13
-
-// Exercicio 14
-
-// Exercicio 15
-
-// Roda todas funções do exercicio
-
-function runEverything() {
-  console.log("Exercicio 1")
-  stockTotal()
-  console.log("Exercicio 3")
-  availableStock()
-  console.log("Exercicio 9")
-  cheapestProduct()
-  console.log("Exercicio 10")
-  ticketMedio()
-}
