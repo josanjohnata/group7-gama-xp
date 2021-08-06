@@ -1,4 +1,8 @@
-let api = [];
+
+// Chamando API
+
+let api = []
+
 
 const myInit = {
   method: 'GET',
