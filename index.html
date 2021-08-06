@@ -4,9 +4,46 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Grupo 7</title>
+  <link rel="icon" type="image/jpg" href="./image/stockIcon-removebg-preview.png">
 </head>
-<body>
-  
+<body onload="loadTotalStock('totalStock')">
+  <header class="headerIndex">
+    <img src="./image/stockIcon-removebg-preview.png" alt="ícone de estoque">
+    <p>Estoque: </p><span id="totalStock">0</span>
+  </header>
+    <form method="GET">
+      <table class="tableInput">
+        <caption>Cadastro de novos produtos</caption>
+        <tr>
+          <td class="alinharRotulos">Descrição do produto:</td>
+          <td><input id="txtNameProduct" type="text"></td>
+        </tr>
+        <tr>
+          <td class="alinharRotulos">Preço do produto:</td>
+          <td><input id="txtCodeProduct" type="number"></td>
+        </tr>
+        <tr>
+          <td class="alinharRotulos">Código do produto:</td>
+          <td><input id="txtQuantityProduct" type="number"></td>
+        </tr>
+        <tr>
+          <td class="alinharRotulos">Quantidade do produto:</td>
+          <td><input id="txtPriceProduct" type="number"></td>
+        </tr>
+        <tr>
+          <td class="btnsIndex">
+            <input type="button" value="cadastrar" style="padding: 3px" onclick="checkProductInfo('txtNameProduct', 'txtPriceProduct', 'txtCodeProduct', 'txtQuantityProduct');">
+            <input type="button" value="Ver estoque" style="padding: 3px" onclick="window.open('estoque.html', '_self');">
+            <input type="reset" value="limpar" style="padding: 3px">
+            <input type="button" value="Sair" style="padding: 3px" onclick="window.open('login.html', '_self');">
+          </td>
+        </tr>
+      </table>
+    </form>
+    <footer>Copyright &#169; Grupo-7 XP-38&#x2013;2021 </footer>
+  <script src="./script.js"></script>
+  <script src="./exerciceResolution.js"></script>
 </body>
 </html>

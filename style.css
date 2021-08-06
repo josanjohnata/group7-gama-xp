@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.bodyLogin {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+.headerLogin {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 10px
+}
+
+.mainLogin {
+  align-items: center;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px 5px rgba(19, 20, 20, 0.09);
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  justify-content: space-evenly;
+  margin: 70px 0;
+  padding: 30px;
+  width: 30vw;
+}
+
+#buttonLogin {
+  border-radius: 5px;
+  border: 1px solid black;
+  color: black;
+  cursor: pointer;
+  padding: 0 15px;
+  text-align: center;
+  padding: auto;
+  margin: 10px;
+}
+
+.headerIndex img {
+  width: 130px;
+  height: 90px;
+}
+
+.btnsIndex {
+  display:flex;
+  color: white;
+  border-radius: 5px;
+  border: 0px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.btnBack {
+  align-items: center;
+  color: white;
+  border-radius: 5px;
+  border: 0px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.tableInput {
+  clear: both;
+  background-color: rgb(124, 151, 151);
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  width: 400px;
+  margin: auto;
+}
+
+caption {
+  background-color: rgb(124, 151, 151);
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+footer {
+  text-align: center;
+}

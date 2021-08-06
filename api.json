@@ -1,5 +1,7 @@
-const listaProdutos = [
-  {
+
+{ 
+    "listaProdutos": [
+      {
       "codProduto": 25754,
       "descricao": "ADAPTADOR BLUETOOH USB RECEPTOR DE AUDIO P2",
       "preco": 5.0,
@@ -1092,3 +1094,4 @@ const listaProdutos = [
       }
   }
 ]
+}
