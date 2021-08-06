@@ -1,4 +1,4 @@
-
+// import api from "./api.js";
 // Essa função é para validar o Login
 
 // const credentials = {
@@ -49,7 +49,7 @@ function registerProduct(name, price, code, quantity) {
     productCode: code,
     productQuantity: quantity,
   };
-  if (typeof(Storage) !== 'undefined') {
+  if (typeof (Storage) !== 'undefined') {
     let products = localStorage.getItem('products');
     if (products == null) products = [];
     else products = JSON.parse(products);
@@ -64,13 +64,13 @@ function registerProduct(name, price, code, quantity) {
 // Essa função atualiza o total do estoque.
 
 function updateTotalStock(idField) {
-  localStorage.setItem('totalStock', ++ document.getElementById(idField).innerHTML)
+  localStorage.setItem('totalStock', ++document.getElementById(idField).innerHTML)
 }
 
 // Essa função atualiza a quantidade de estoque ao carregar a página.
 
 function loadTotalStock(idField) {
-  if (typeof(Storage) !== 'undefined') {
+  if (typeof (Storage) !== 'undefined') {
     let totalStock = localStorage.getItem('totalStock');
     if (totalStock == null) totalStock = 0;
     document.getElementById(idField).innerHTML = totalStock;
@@ -80,7 +80,7 @@ function loadTotalStock(idField) {
 // Esse função lista o novo estoque na página estoque.html
 
 function listStock() {
-  if (typeof(Storage) !== 'undefined') {
+  if (typeof (Storage) !== 'undefined') {
     let products = localStorage.getItem('products');
     document.write('<h1>Estoque:</h1>')
     if (products == null)
@@ -100,19 +100,5 @@ function listStock() {
   else alert('A versão do seu navegador é muito antiga. Não será possível executar essa aplicação.')
   
 }
-
-
-// // exercício 2
-// let destaqueTotal = 0;
-// let total = 0;
-
-// function emDestaque() {
-//   for (let i = 0; i < api.length; i += 1) {
-//     if (listaProdutos.emDestaque === "sim") {
-//       destaqueTotal = api.listaProdutos.emDestaque * listaProdutos.qtdEstoque;
-//     }
-//     return total + (listaProdutos.preco * destaqueTotal);
-//   }
-// }
 
 

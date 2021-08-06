@@ -1,4 +1,4 @@
- const api = {
+const api = {
   listaProdutos: [
     {
       codProduto: 25754,
