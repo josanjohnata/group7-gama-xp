@@ -2,25 +2,25 @@
 ## HACKER - DESAFIO EM GRUPO 1
 
 
-- [ ] 1 - Quantidade total de itens em estoque (somatória das quantidades de todos os produtos)
+- [x] 1 - Quantidade total de itens em estoque (somatória das quantidades de todos os produtos)
 
-- [ ] 2 - Quantidade total de itens em destaque (somatória das quantidades dos itens marcados como "emDestaque : sim")
+- [x] 2 - Quantidade total de itens em destaque (somatória das quantidades dos itens marcados como "emDestaque : sim")
 
-- [ ] 3 - Quantidade total de itens disponíveis (similar ao anterior)
+- [x] 3 - Quantidade total de itens disponíveis (similar ao anterior)
 
-- [ ] 4 - Quantidade de itens disponíveis e em destaque
+- [x] 4 - Quantidade de itens disponíveis e em destaque
 
-- [ ] 5 - Valor total do inventário da empresa (somatória dos valores individuais multiplicado pela quantidade em estoque - considere apenas os produtos “EM ESTOQUE”)
+- [x] 5 - Valor total do inventário da empresa (somatória dos valores individuais multiplicado pela quantidade em estoque - considere apenas os produtos “EM ESTOQUE”)
 
-- [ ] 6 - Produto mais caro da loja (bem como seu departamento - considere apenas o preço dele)
+- [x] 6 - Produto mais caro da loja (bem como seu departamento - considere apenas o preço dele)
 
-- [ ] 7 - Produto mais barato da loja (bem como seu departamento - considere apenas o preço dele)
+- [x] 7 - Produto mais barato da loja (bem como seu departamento - considere apenas o preço dele)
 
-- [ ] 8 - Produto de estoque mais valioso (considere o preço multiplicado pela quantidade e também apenas EM ESTOQUE)
+- [x] 8 - Produto de estoque mais valioso (considere o preço multiplicado pela quantidade e também apenas EM ESTOQUE)
 
-- [ ] 9 - Produto em estoque menos valioso (considere o preço multiplicado pela quantidade e também apenas EM ESTOQUE)
+- [x] 9 - Produto em estoque menos valioso (considere o preço multiplicado pela quantidade e também apenas EM ESTOQUE)
 
-- [ ] 10 - Valor do ticket médio dos produtos da empresa (basicamente o valor total do inventário dividido pelo número de itens - considere TODOS os produtos, porém considere apenas 1 exemplar por produto)
+- [x] 10 - Valor do ticket médio dos produtos da empresa (basicamente o valor total do inventário dividido pelo número de itens - considere TODOS os produtos, porém considere apenas 1 exemplar por produto)
 
 - [ ] 11 - Somatória de itens por departamento (você deverá retornar um objeto contendo o nome do departamento e o total de itens nele - Novamente considere os produtos “EM ESTOQUE” - e é apenas a somatória da quantidade de itens)
 
