@@ -1,4 +1,4 @@
-let api = []
+let api = [];
 
 const myInit = {
   method: 'GET',
@@ -7,9 +7,9 @@ const myInit = {
   },
   mode: 'cors',
   cache: 'default'
-}
+};
 
-let myRequest = new Request("./api.json", myInit)
+let myRequest = new Request("./api.json", myInit);
 
 fetch(myRequest)
   .then(function (resp) {
@@ -17,7 +17,7 @@ fetch(myRequest)
   }).then(function (d) {
     api = d
     return api
-  })
+  });
 
   // Exercício 1:
 
@@ -25,25 +25,23 @@ fetch(myRequest)
 
 function stockTotal() {
 
-    const stockTotal = api.listaProdutos.reduce((acc, i) => acc + i.qtdEstoque, 0)
+    const stockTotal = api.listaProdutos.reduce((acc, i) => acc + i.qtdEstoque, 0);
   
-    console.log("A quantidade total de itens em estoque é: " + stockTotal)
-  }
+    console.log("A quantidade total de itens em estoque é: " + stockTotal);
+  };
   
   // Exercicio 2:
 
 
-// let destaqueTotal = 0;
-// let total = 0;
-
-// function emDestaque() {
-//   for (let i = 0; i < api.length; i += 1) {
-//     if (listaProdutos.emDestaque === "sim") {
-//       destaqueTotal = api.listaProdutos.emDestaque * listaProdutos.qtdEstoque;
-//     }
-//     return total + (listaProdutos.preco * destaqueTotal);
-//   }
-// }
+  function featuredProduct() {
+    let productFeat = 0;
+    for (item in listaProdutos) {
+        if (listaProdutos[item].emDestaque === 'sim') {
+            productFeat += listaProdutos[item].qtdEstoque
+        };
+    };
+    console.log(`O produto em destaque é: ${ productFeat }`);
+};
 
   
   // Exercicio 3: 
@@ -52,10 +50,10 @@ function stockTotal() {
   
   function availableStock() {
   
-    const availableStock = api.listaProdutos.filter(({ disponivel }) => disponivel === "sim").reduce((acc, i) => acc + i.qtdEstoque, 0)
+    const availableStock = api.listaProdutos.filter(({ disponivel }) => disponivel === "sim").reduce((acc, i) => acc + i.qtdEstoque, 0);
   
-    console.log("A quantidade total de itens disponíveis em estoque é: " + availableStock)
-  }
+    console.log("A quantidade total de itens disponíveis em estoque é: " + availableStock);
+  };
   
   // Exercicio 4
   // Quantidade de itens disponíveis e em destaque.
@@ -67,12 +65,13 @@ function stockTotal() {
         for (let i = 0; i < api.listaProdutos.length; i++) {
           if (api.listaProdutos[i].disponivel === "sim" && api.listaProdutos[i].emDestaque === "sim") {
             
-            featuredProducts += (api.listaProdutos[i].qtdEstoque)
+            featuredProducts += (api.listaProdutos[i].qtdEstoque);
       
-          }
-        }
-        console.log('Produtos disponíveis e em destaque: ' + featuredProducts)
-      }
+          };
+        };
+        console.log('Produtos disponíveis e em destaque: ' + featuredProducts);
+      };
+
   // Exercicio 5
   // Valor total do inventário da empresa (somatória dos valores individuais multiplicado pela quantidade em estoque - considere apenas os produtos “EM ESTOQUE”)
   
@@ -81,10 +80,10 @@ function stockTotal() {
     for ( i in api.listaProdutos ) {
       if (api.listaProdutos[i].disponivel === "sim") {
         stockTaking += api.listaProdutos.qtdEstoque * api.listaProdutos.preco;
-      }
-    }
+      };
+    };
     console.log(stockTaking);
-  }
+  };
   
   // Exercicio 6
   // Produto mais caro da loja (bem como seu departamento - considere apenas o preço dele)
@@ -93,22 +92,20 @@ function stockTotal() {
         let expensiveProduct = api.listaProdutos[0].preco;
         let x = 0;
         for (let i = 0; i < api.listaProdutos.length; i++) {
-  
           if (api.listaProdutos[i].preco > expensiveProduct) {
             expensiveProduct = api.listaProdutos[i].preco;
             x = i;
           };
         };
-        console.log(api.listaProdutos[x].descricao + ' ' + api.listaProdutos[x].departamento.nomeDepto + ' R$ ' + expensiveProduct)
+        console.log(api.listaProdutos[x].descricao + ' ' + api.listaProdutos[x].departamento.nomeDepto + ' R$ ' + expensiveProduct);
   };
   
   
   // 6 - Produto mais caro da loja (bem como seu departamento - considere apenas o preço dele)
   
-  function expensiveProduct() {
-  
-    let expensiveProduct = api.listaProdutos[0].preco
-    let x = 0
+  function expensiveProduct() {  
+    let expensiveProduct = api.listaProdutos[0].preco;
+    let x = 0;
   
     console.log(expensiveProduct)
   
@@ -138,7 +135,22 @@ function stockTotal() {
         }
         console.log(api.listaProdutos[x].descricao + ' ' + api.listaProdutos[x].departamento.nomeDepto + ' R$' + lowestPrice) 
   }
-  // Exercicio 8
+  // Exercicio 8:
+
+  function mostExpensiveProduct() {
+    let productName = "";
+    let price = 0;
+    for (item in listaProdutos) {
+        if (listaProdutos[item].disponivel === 'sim') {
+            if ((listaProdutos[item].preco * listaProdutos[item].qtdEstoque) > price) {
+                price = listaProdutos[item].preco * listaProdutos[item].qtdEstoque
+                productName = listaProdutos[item].descricao
+            }
+        }
+      }
+      console.log(`O produto mais caro é: ${ productName }.`);
+} 
+
   
   // Exercicio 9:
   

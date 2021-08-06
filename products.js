@@ -1,5 +1,4 @@
 import api from './api.js'
-console.log(api);
 
 function listaProdutos2() {
   const list = document.querySelector('#productsList');
