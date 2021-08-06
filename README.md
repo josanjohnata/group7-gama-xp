@@ -6,7 +6,17 @@
 * Luis Igreja
 * Jhonata Pontes
 
-## Requisitos
+#### Intruções para correção do exercício
+
+A lista de exercícios está localizada no arquivo "exerciceResolution.js".
+
+Para checar as funções, abra o index.html e rode a função runEverything().
+
+
+#### Objetivo do trabalho
+Nosso objetivo com esse projeto é ter um backoffice de gestão de inventário completo 
+
+## Requisitos do trabalho
 
 - [x] Quantidade total de itens em estoque (somatória das quantidades de todos os produtos)
 - [x] Quantidade total de itens em destaque (somatória das quantidades dos itens marcados como "emDestaque : sim")
