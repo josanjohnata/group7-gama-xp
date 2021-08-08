@@ -191,18 +191,27 @@ function stockTotal() {
   
     let departaments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
     departaments = departaments.filter((v, i, a) => a.indexOf(v) === i)
-  
-    for (let i = 0; i < departaments.length; i++) {
-      for (let a = 0; a < api.listaProdutos.length; a++) {
-        if (departaments[i] === api.listaProdutos.departamento.nomeDepto) {
-  
+
+    let departamentsValue = []
+    let maxValuableDepartament
+
+    for (i in departaments) {
+      departamentsValue.push({departament: departaments[i], value: 0})
+    }
+
+    for (index in departamentsValue) {
+      for (i in api.listaProdutos) {
+        if (departamentsValue[index].departament === api.listaProdutos[i].departamento.nomeDepto) {
+          departamentsValue[index].value = departamentsValue[index].value + (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
         }
       }
+
+      maxValuableDepartament = departamentsValue.reduce((max, min) => max.value > min.value ? max : min)
     }
-  
+
+    console.log(`O departamento mais valioso é ${maxValuableDepartament.departament} com um valor total de R$${maxValuableDepartament.value}`)
   }
   // Exercicio 15
-  
   // Roda todas funções do exercicio
   
   function runEverything() {
