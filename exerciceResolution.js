@@ -204,12 +204,12 @@ function stockTotal() {
   
   function departmentMostValuable() {
   
-    let departaments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
-    departaments = departaments.filter((v, i, a) => a.indexOf(v) === i)
+    let departments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
+    departments = departments.filter((v, i, a) => a.indexOf(v) === i)
   
-    for (let i = 0; i < departaments.length; i++) {
+    for (let i = 0; i < departments.length; i++) {
       for (let a = 0; a < api.listaProdutos.length; a++) {
-        if (departaments[i] === api.listaProdutos.departamento.nomeDepto) {
+        if (departments[i] === api.listaProdutos.departamento.nomeDepto) {
   
         }
       }
