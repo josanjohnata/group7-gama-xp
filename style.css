@@ -43,11 +43,6 @@
   margin: 10px;
 }
 
-.headerIndex img {
-  width: 130px;
-  height: 90px;
-}
-
 .btnsIndex {
   display:flex;
   color: white;
