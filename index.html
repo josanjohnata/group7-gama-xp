@@ -1,21 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="pt-BR">
+<link>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>Grupo 7</title>
-  <link rel="icon" type="image/jpg" href="./image/stockIcon-removebg-preview.png">
+  <link rel="icon" type="image/jpg" href="./image/icon.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 </head>
 <body onload="loadTotalStock('totalStock')">
   <header class="headerIndex">
-    <img src="./image/stockIcon-removebg-preview.png" alt="ícone de estoque">
+    <i class="material-icons">show_chart</i>
     <p>Estoque: </p><span id="totalStock">0</span>
   </header>
     <form method="GET">
       <table class="tableInput">
         <caption>Cadastro de novos produtos</caption>
+        <tr>
+          <label for="department"><td class="alinharRotulos">Departamento do produto:</td></label>
+          <td><select name="department" id="txtDepartment">
+            <option value="Adaptadores">Adaptadores</option>
+            <option value="Ferramentas">Ferramentas</option>
+            <option value="Eletrônicos">Eletrônicos</option>
+            <option value="Informática">Informática</option>
+            <option value="Casa">Casa</option>
+            <option value="Acessórios">Acessórios</option>
+            <option value="Móveis">Móveis</option>
+            <option value="Tablets e Celulares">Tablets e Celulares</option>
+            <option value="Games">Games</option>
+            </select>
+          </td>
+        </tr>
         <tr>
           <td class="alinharRotulos">Descrição do produto:</td>
           <td><input id="txtNameProduct" type="text"></td>

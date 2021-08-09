@@ -23,13 +23,16 @@
 
 // Essa função valida as informações dos produtos.
 
-function checkProductInfo(txtNameProduct, txtQuantityProduct, txtPriceProduct, txtCodeProduct) {
+function checkProductInfo(txtDepartment, txtNameProduct, txtQuantityProduct, txtPriceProduct, txtCodeProduct) {
+  let department = document.getElementById(txtDepartment).value;
   let productName = document.getElementById(txtNameProduct).value;
   let productPrice = document.getElementById(txtPriceProduct).value;
   let productCode = document.getElementById(txtCodeProduct).value;
   let productQuantity = document.getElementById(txtQuantityProduct).value;
 
-  if (productName == '') {
+  if (department == '') {
+    alert('Departamento do produto está em branco. Por favor preenchê-lo!');
+  } else if (productName == '') {
     alert('Nome do produto está em branco. Por favor preenchê-lo!');
   } else if (productQuantity == '') {
     alert('A quantidade do produto está em branco. Por favor preenchê-lo!');
@@ -42,8 +45,9 @@ function checkProductInfo(txtNameProduct, txtQuantityProduct, txtPriceProduct, t
 
 // Essa função cadastra um novo produto.
 
-function registerProduct(name, price, code, quantity) {
+function registerProduct(department, name, price, code, quantity) {
   let newProduct = {
+    department: department,
     productName: name,
     productPrice: price,
     productCode: code,
@@ -89,7 +93,8 @@ function listStock() {
       products = JSON.parse(products);
       products.forEach(product => {
         document.write('<ul>');
-        document.write('<li>Nome do produto: ' + product.productName + '</li>');
+        document.write('<li>Departamento: ' + product.department + '</li>');
+        document.write('<li>Descrição do produto: ' + product.productName + '</li>');
         document.write('<li>Código do produto: ' + product.productCode + '</li>');
         document.write('<li>Quantidade no estoque: ' + product.productQuantity + '</li>');
         document.write('<li>Preço do produto: ' + product.productPrice + '</li>');
@@ -100,5 +105,3 @@ function listStock() {
   else alert('A versão do seu navegador é muito antiga. Não será possível executar essa aplicação.')
   
 }
-
-

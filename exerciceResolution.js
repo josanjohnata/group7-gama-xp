@@ -133,7 +133,7 @@ function stockTotal() {
             }
         }
       }
-      console.log(`O estoqu de maior valor é do produto: ${ productName } com o valor de R$ ${price}, localizado em ${productStockName}.`);
+      console.log(`O estoque de maior valor é do produto: ${ productName } com o valor de R$ ${price}, localizado em ${productStockName}.`);
 } 
 
   
@@ -189,24 +189,66 @@ function stockTotal() {
   
   function departmentMostValuable() {
   
-    let departaments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
-    departaments = departaments.filter((v, i, a) => a.indexOf(v) === i)
+    let departments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
+    departments = departments.filter((v, i, a) => a.indexOf(v) === i)
   
-    for (let i = 0; i < departaments.length; i++) {
+    for (let i = 0; i < departments.length; i++) {
       for (let a = 0; a < api.listaProdutos.length; a++) {
-        if (departaments[i] === api.listaProdutos.departamento.nomeDepto) {
+        if (departments[i] === api.listaProdutos.departamento.nomeDepto) {
   
+    let departments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
+    departments = departments.filter((v, i, a) => a.indexOf(v) === i)
+
+    let departmentsValue = []
+    let maxValuableDepartment
+
+    for (i in departments) {
+      departmentsValue.push({department: departments[i], value: 0})
+    }
+
+    for (index in departmentsValue) {
+      for (i in api.listaProdutos) {
+        if (departmentsValue[index].department === api.listaProdutos[i].departamento.nomeDepto) {
+          departmentsValue[index].value = departmentsValue[index].value + (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
         }
       }
+
+      maxValuableDepartment = departmentsValue.reduce((max, min) => max.value > min.value ? max : min)
     }
-  
+
+    console.log(`O departamento mais valioso é ${maxValuableDepartment.department} com um valor total de R$${maxValuableDepartment.value}`)
   }
   // Exercicio 15
+
+  function departmentLessValuable() {
   
+    let departments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
+    departments = departments.filter((v, i, a) => a.indexOf(v) === i)
+
+    let departmentsValue = []
+    let minValuableDepartment
+
+    for (i in departments) {
+      departmentsValue.push({department: departments[i], value: 0})
+    }
+
+    for (index in departmentsValue) {
+      for (i in api.listaProdutos) {
+        if (departmentsValue[index].department === api.listaProdutos[i].departamento.nomeDepto) {
+          departmentsValue[index].value = departmentsValue[index].value + (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
+        }
+      }
+
+      minValuableDepartment = departmentsValue.reduce((max, min) => max.value < min.value ? max : min)
+    }
+
+    console.log(`O departamento menos valioso é "${minValuableDepartment.department}" com um valor total de R$${minValuableDepartment.value}`)
+  }
+
   // Roda todas funções do exercicio
   
   function runEverything() {
-    console.log("Exercicio 1")
+    console.log("Exercicio 1")};
     stockTotal()
     console.log("Exercicio 2")
     amountFeaturedProduct()
