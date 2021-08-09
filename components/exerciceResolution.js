@@ -13,7 +13,7 @@ const myInit = {
   cache: 'default'
 };
 
-let myRequest = new Request("./api.json", myInit);
+let myRequest = new Request("../api.json", myInit);
 
 fetch(myRequest)
   .then(function (resp) {
@@ -194,13 +194,10 @@ function stockTotal() {
   
     for (let i = 0; i < departments.length; i++) {
       for (let a = 0; a < api.listaProdutos.length; a++) {
-        if (departments[i] === api.listaProdutos.departamento.nomeDepto) {
+        if (departments[i] === api.listaProdutos[a].departamento.nomeDepto) {
         }
       }
     }
-  
-    let departments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
-    departments = departments.filter((v, i, a) => a.indexOf(v) === i)
 
     let departmentsValue = []
     let maxValuableDepartment
