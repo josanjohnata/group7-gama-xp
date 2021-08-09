@@ -1,4 +1,8 @@
-let api = [];
+
+// Chamando API
+
+let api = []
+
 
 const myInit = {
   method: 'GET',
@@ -33,14 +37,14 @@ function stockTotal() {
   // Exercicio 2:
 
 
-  function featuredProduct() {
+  function amountFeaturedProduct() {
     let productFeat = 0;
-    for (item in listaProdutos) {
-        if (listaProdutos[item].emDestaque === 'sim') {
-            productFeat += listaProdutos[item].qtdEstoque
+    for (item in api.listaProdutos) {
+        if (api.listaProdutos[item].emDestaque === 'sim') {
+            productFeat += api.listaProdutos[item].qtdEstoque
         };
     };
-    console.log(`O produto em destaque é: ${ productFeat }`);
+    console.log(`Total de produtos em destaque é: ${ productFeat }`);
 };
 
   
@@ -77,12 +81,12 @@ function stockTotal() {
   
   function valueStockTaking() {
     let stockTaking = 0;
-    for ( i in api.listaProdutos ) {
+    for (i in api.listaProdutos) {
       if (api.listaProdutos[i].disponivel === "sim") {
-        stockTaking += api.listaProdutos.qtdEstoque * api.listaProdutos.preco;
+        stockTaking += api.listaProdutos[i].qtdEstoque * api.listaProdutos[i].preco;
       };
     };
-    console.log(stockTaking);
+    console.log(`O valor total em estoque é ${stockTaking}`);
   };
   
   // Exercicio 6
@@ -97,28 +101,8 @@ function stockTotal() {
             x = i;
           };
         };
-        console.log(api.listaProdutos[x].descricao + ' ' + api.listaProdutos[x].departamento.nomeDepto + ' R$ ' + expensiveProduct);
+        console.log('O produto mais caro da loja é: ' + api.listaProdutos[x].descricao + ' ' + api.listaProdutos[x].departamento.nomeDepto + ' no valor de R$' + expensiveProduct )
   };
-  
-  
-  // 6 - Produto mais caro da loja (bem como seu departamento - considere apenas o preço dele)
-  
-  function expensiveProduct() {  
-    let expensiveProduct = api.listaProdutos[0].preco;
-    let x = 0;
-  
-    console.log(expensiveProduct)
-  
-    for (let i = 0; i < api.listaProdutos.length; i++) {
-      if (api.listaProdutos[i].preco > expensiveProduct) {
-        expensiveProduct = api.listaProdutos[i].preco
-        x = i
-      }
-    }
-  
-    console.log(api.listaProdutos[x])
-  
-  }
   
   // Exercicio 7
   //Produto mais barato da loja (bem como seu departamento - considere apenas o preço dele)
@@ -133,22 +117,23 @@ function stockTotal() {
             x = i
           }
         }
-        console.log(api.listaProdutos[x].descricao + ' ' + api.listaProdutos[x].departamento.nomeDepto + ' R$' + lowestPrice) 
+        console.log('O produto mais barato da loja é: ' + api.listaProdutos[x].descricao + ' ' + api.listaProdutos[x].departamento.nomeDepto + ' R$' + lowestPrice) 
   }
   // Exercicio 8:
 
   function mostExpensiveProduct() {
     let productName = "";
     let price = 0;
-    for (item in listaProdutos) {
-        if (listaProdutos[item].disponivel === 'sim') {
-            if ((listaProdutos[item].preco * listaProdutos[item].qtdEstoque) > price) {
-                price = listaProdutos[item].preco * listaProdutos[item].qtdEstoque
-                productName = listaProdutos[item].descricao
+    for (item in api.listaProdutos) {
+        if (api.listaProdutos[item].disponivel === 'sim') {
+            if ((api.listaProdutos[item].preco * api.listaProdutos[item].qtdEstoque) > price) {
+                price = api.listaProdutos[item].preco * api.listaProdutos[item].qtdEstoque
+                productName = api.listaProdutos[item].descricao
+                productStockName = api.listaProdutos[item].departamento.nomeDepto
             }
         }
       }
-      console.log(`O produto mais caro é: ${ productName }.`);
+      console.log(`O estoque de maior valor é do produto: ${ productName } com o valor de R$ ${price}, localizado em ${productStockName}.`);
 } 
 
   
@@ -211,20 +196,74 @@ function stockTotal() {
       for (let a = 0; a < api.listaProdutos.length; a++) {
         if (departments[i] === api.listaProdutos.departamento.nomeDepto) {
   
+    let departments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
+    departments = departments.filter((v, i, a) => a.indexOf(v) === i)
+
+    let departmentsValue = []
+    let maxValuableDepartment
+
+    for (i in departments) {
+      departmentsValue.push({department: departments[i], value: 0})
+    }
+
+    for (index in departmentsValue) {
+      for (i in api.listaProdutos) {
+        if (departmentsValue[index].department === api.listaProdutos[i].departamento.nomeDepto) {
+          departmentsValue[index].value = departmentsValue[index].value + (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
         }
       }
+
+      maxValuableDepartment = departmentsValue.reduce((max, min) => max.value > min.value ? max : min)
     }
-  
+
+    console.log(`O departamento mais valioso é ${maxValuableDepartment.department} com um valor total de R$${maxValuableDepartment.value}`)
   }
   // Exercicio 15
+
+  function departmentLessValuable() {
   
+    let departments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
+    departments = departments.filter((v, i, a) => a.indexOf(v) === i)
+
+    let departmentsValue = []
+    let minValuableDepartment
+
+    for (i in departments) {
+      departmentsValue.push({department: departments[i], value: 0})
+    }
+
+    for (index in departmentsValue) {
+      for (i in api.listaProdutos) {
+        if (departmentsValue[index].department === api.listaProdutos[i].departamento.nomeDepto) {
+          departmentsValue[index].value = departmentsValue[index].value + (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
+        }
+      }
+
+      minValuableDepartment = departmentsValue.reduce((max, min) => max.value < min.value ? max : min)
+    }
+
+    console.log(`O departamento menos valioso é "${minValuableDepartment.department}" com um valor total de R$${minValuableDepartment.value}`)
+  }
+
   // Roda todas funções do exercicio
   
   function runEverything() {
-    console.log("Exercicio 1")
+    console.log("Exercicio 1")};
     stockTotal()
+    console.log("Exercicio 2")
+    amountFeaturedProduct()
     console.log("Exercicio 3")
     availableStock()
+    console.log("Exercicio 4")
+    featuredProducts ()
+    console.log("Exercicio 5")
+    valueStockTaking()
+    console.log("Exercicio 6")
+    expensiveProduct()
+    console.log("Exercicio 7")
+    lowestPrice()
+    console.log("Exercicio 8")
+    mostExpensiveProduct()
     console.log("Exercicio 9")
     cheapestProduct()
     console.log("Exercicio 10")
