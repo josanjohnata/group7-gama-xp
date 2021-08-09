@@ -195,6 +195,9 @@ function stockTotal() {
     for (let i = 0; i < departments.length; i++) {
       for (let a = 0; a < api.listaProdutos.length; a++) {
         if (departments[i] === api.listaProdutos.departamento.nomeDepto) {
+        }
+      }
+    }
   
     let departments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
     departments = departments.filter((v, i, a) => a.indexOf(v) === i)
@@ -218,6 +221,7 @@ function stockTotal() {
 
     console.log(`O departamento mais valioso é ${maxValuableDepartment.department} com um valor total de R$${maxValuableDepartment.value}`)
   }
+
   // Exercicio 15
 
   function departmentLessValuable() {
@@ -248,7 +252,7 @@ function stockTotal() {
   // Roda todas funções do exercicio
   
   function runEverything() {
-    console.log("Exercicio 1")};
+    console.log("Exercicio 1");
     stockTotal()
     console.log("Exercicio 2")
     amountFeaturedProduct()
