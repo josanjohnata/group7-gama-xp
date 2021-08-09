@@ -234,9 +234,6 @@ function stockTotal() {
       }
 
       minValuableDepartment = departmentsValue.reduce((max, min) => max.value < min.value ? max : min)
-      a
-
-    aaaa
     }
 
     console.log(`O departamento menos valioso é "${minValuableDepartment.department}" com um valor total de R$${minValuableDepartment.value}`)
