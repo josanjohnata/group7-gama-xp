@@ -8,9 +8,9 @@
 
 ### Intruções para correção do exercício
 
-A lista de exercícios está localizada no arquivo "exerciceResolution.js".
+A lista de exercícios está localizada no arquivo "exerciceResolution.js". Dentro da pasta "Components".
 
-Para checar as funções, abra o index.html e rode a função runEverything().
+Para checar as funções, abra o index.html e rode a função runEverything(). Localizado dentro da pasta "Pages".
 
 
 ### Objetivo do trabalho
