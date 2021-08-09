@@ -4,7 +4,7 @@
 
 * Kimberly Amaral
 * Luis Igreja
-* Jhonata Pontes
+* Johnata Pontes
 
 ### Intruções para correção do exercício
 
