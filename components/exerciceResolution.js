@@ -13,7 +13,7 @@ const myInit = {
   cache: 'default'
 };
 
-let myRequest = new Request("./api.json", myInit);
+let myRequest = new Request("../api.json", myInit);
 
 fetch(myRequest)
   .then(function (resp) {
@@ -220,7 +220,6 @@ function stockTotal() {
     departments = departments.filter((v, i, a) => a.indexOf(v) === i)
 
     let departmentsValue = []
-    let minValuableDepartment
 
     for (i in departments) {
       departmentsValue.push({department: departments[i], value: 0})
@@ -232,9 +231,9 @@ function stockTotal() {
           departmentsValue[index].value = departmentsValue[index].value + (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
         }
       }
-
-      minValuableDepartment = departmentsValue.reduce((max, min) => max.value < min.value ? max : min)
     }
+
+    let minValuableDepartment = departmentsValue.reduce((max, min) => max.value < min.value ? max : min)
 
     console.log(`O departamento menos valioso é "${minValuableDepartment.department}" com um valor total de R$${minValuableDepartment.value}`)
   }
