@@ -1,27 +1,26 @@
 
 // Chamando API
 
-let api = []
+var api = []
 
-
-const myInit = {
-  method: 'GET',
-  headrs: {
-    'Content-Type': 'application/json'
-  },
-  mode: 'cors',
-  cache: 'default'
-};
-
-let myRequest = new Request("../api.json", myInit);
-
-fetch(myRequest)
-  .then(function (resp) {
-    return resp.json();
-  }).then(function (d) {
-    api = d
-    return api
-  });
+  const myInit = {
+    method: 'GET',
+    headrs: {
+      'Content-Type': 'application/json'
+    },
+    mode: 'cors',
+    cache: 'default'
+  };
+  
+  let myRequest = new Request("../api.json", myInit);
+  
+  fetch(myRequest)
+    .then(function (resp) {
+      return resp.json();
+    }).then(function (d) {
+      api = d
+      return api
+    });
 
   // Exercício 1:
 
@@ -178,36 +177,110 @@ function stockTotal() {
   }
   
   // Exercicio 11
-  
-  // Exercicio 12
-  
-  // Exercicio 13
-  
-  // Exercicio 14
-  
-  // Departamento mais valioso (qual o departamento que tem a maior somatória dos valores dos itens - Considere todos os departamentos)
-  
-  function departmentMostValuable() {
-  
+
+  function sumItensStock() {
+
     let departments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
     departments = departments.filter((v, i, a) => a.indexOf(v) === i)
   
     let departmentsValue = []
-    let maxValuableDepartment
+  
+    for (i in departments) {
+      departmentsValue.push({department: departments[i], qtdItens: 0})
+    }
+  
+    for (index in departmentsValue) {
+      for (i in api.listaProdutos) {
+        if (departmentsValue[index].department === api.listaProdutos[i].departamento.nomeDepto && api.listaProdutos[i].disponivel === "sim") {
+          departmentsValue[index].qtdItens = departmentsValue[index].qtdItens + api.listaProdutos[i].qtdEstoque
+        }
+      }
+      console.log(`O departamento de ${departmentsValue[index].department} tem o total de ${departmentsValue[index].qtdItens} itens em estoque.`)
+      
+    }
 
+    console.log(departmentsValue)
+  }
+  
+  // Exercicio 12
+
+  function sumValueStock() {
+
+    let departments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
+    departments = departments.filter((v, i, a) => a.indexOf(v) === i)
+  
+    let departmentsValue = []
+  
     for (i in departments) {
       departmentsValue.push({department: departments[i], value: 0})
     }
-
+  
     for (index in departmentsValue) {
       for (i in api.listaProdutos) {
         if (departmentsValue[index].department === api.listaProdutos[i].departamento.nomeDepto) {
           departmentsValue[index].value = departmentsValue[index].value + (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
         }
       }
-
-      maxValuableDepartment = departmentsValue.reduce((max, min) => max.value > min.value ? max : min)
+      console.log(`O departamento de ${departmentsValue[index].department} tem o valor total de R$${departmentsValue[index].value.toFixed(2)} em itens no estoque.`)
+      
     }
+    console.log(departmentsValue)
+  }
+  
+  // Exercicio 13
+  
+  function departamentStockTM() {
+
+    let departments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
+    departments = departments.filter((v, i, a) => a.indexOf(v) === i)
+  
+    let departmentsValue = []
+  
+    for (i in departments) {
+      departmentsValue.push({department: departments[i], value: 0, itens: 0, ticketMedio: 0})
+    }
+  
+    for (index in departmentsValue) {
+      for (i in api.listaProdutos) {
+        if (departmentsValue[index].department === api.listaProdutos[i].departamento.nomeDepto) {
+          departmentsValue[index].value = departmentsValue[index].value + (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
+          departmentsValue[index].itens += 1
+        }
+      }
+      departmentsValue[index].ticketMedio = departmentsValue[index].value / departmentsValue[index].itens
+
+      console.log(`O ticket médio do departamento ${departmentsValue[index].department} é R$${departmentsValue[index].ticketMedio.toFixed(2)}`)
+      
+    }
+    console.log(departmentsValue)
+  }
+
+  // Exercicio 14
+  
+  // Departamento mais valioso (qual o departamento que tem a maior somatória dos valores dos itens - Considere todos os departamentos
+
+  console.log(departmentsValue)
+  
+  function departmentMostValuable() {
+
+    let departments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
+    departments = departments.filter((v, i, a) => a.indexOf(v) === i)
+  
+    let departmentsValue = []
+  
+    for (i in departments) {
+      departmentsValue.push({department: departments[i], value: 0})
+    }
+  
+    for (index in departmentsValue) {
+      for (i in api.listaProdutos) {
+        if (departmentsValue[index].department === api.listaProdutos[i].departamento.nomeDepto) {
+          departmentsValue[index].value = departmentsValue[index].value + (api.listaProdutos[i].preco * api.listaProdutos[i].qtdEstoque)
+        }
+      }
+    }
+  
+      let maxValuableDepartment = departmentsValue.reduce((max, min) => max.value > min.value ? max : min)
 
     console.log(`O departamento mais valioso é ${maxValuableDepartment.department} com um valor total de R$${maxValuableDepartment.value}`)
   }
@@ -215,16 +288,16 @@ function stockTotal() {
   // Exercicio 15
 
   function departmentLessValuable() {
-  
+
     let departments = api.listaProdutos.map((i) => i.departamento.nomeDepto)
     departments = departments.filter((v, i, a) => a.indexOf(v) === i)
-
+  
     let departmentsValue = []
-
+  
     for (i in departments) {
       departmentsValue.push({department: departments[i], value: 0})
     }
-
+  
     for (index in departmentsValue) {
       for (i in api.listaProdutos) {
         if (departmentsValue[index].department === api.listaProdutos[i].departamento.nomeDepto) {
@@ -261,4 +334,14 @@ function stockTotal() {
     cheapestProduct()
     console.log("Exercicio 10")
     ticketMedio()
+    console.log('Exercicio 11')
+    sumItensStock()
+    console.log('Exercicio 12')
+    sumValueStock()
+    console.log('Exercicio 13')
+    departamentStockTM()
+    console.log("Exercicio 14")
+    departmentMostValuable()
+    console.log("Exercicio 15")
+    departmentLessValuable()
   }
